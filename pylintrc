@@ -1,0 +1,21 @@
+[MAIN]
+fail-on=
+  I,
+
+jobs=2
+
+load-plugins=
+  pylint_strict_informational,
+
+[MESSAGES CONTROL]
+disable=
+  duplicate-code,
+  locally-disabled,
+
+enable=
+  useless-suppression,
+  use-symbolic-message-instead,
+
+[DESIGN]
+max-args=7
+max-attributes=9

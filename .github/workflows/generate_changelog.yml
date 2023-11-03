@@ -1,0 +1,32 @@
+name: Generate changelog
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  generate_changelog:
+    runs-on: ubuntu-latest
+    name: Generate changelog for main branch
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          ref: main
+
+      - name: Generate changelog
+        uses: charmixer/auto-changelog-action@v1.4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release_branch: main
+          base: HISTORY.md
+          since_tag: "0.1"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5.0.2
+        with:
+          base: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update changelog
+          title: Update changelog
+          body: Update the changelog. This PR is created automatically after a new release.
+          branch: update-changelog
