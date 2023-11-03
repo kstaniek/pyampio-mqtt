@@ -4,7 +4,7 @@ from pathlib import Path
 from setuptools import setup, find_packages
 
 PROJECT_DIR = Path(__file__).parent.resolve()
-VERSION = (PROJECT_DIR / "mysensors" / "VERSION").read_text(encoding="utf-8").strip()
+VERSION = (PROJECT_DIR / "ampio" / "VERSION").read_text(encoding="utf-8").strip()
 
 README_FILE = PROJECT_DIR / "README.md"
 LONG_DESCRIPTION = README_FILE.read_text(encoding="utf-8")
@@ -37,7 +37,7 @@ setup(
     packages=find_packages(exclude=["tests", "tests.*"]),
     include_package_data=True,
     python_requires=">=3.8",
-    entry_points={"console_scripts": ["pymysensors = mysensors.cli:cli"]},
+    entry_points={"console_scripts": ["pyampio-mqtt = ampio-mqtt.cli:cli"]},
     keywords=["sensor", "actuator", "IoT", "DYI"],
     zip_safe=True,
     classifiers=[
